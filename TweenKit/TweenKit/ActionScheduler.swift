@@ -46,14 +46,17 @@ import QuartzCore
      Removes a currently running animation
      - Parameter animation: The animation to remove
      */
-    public func remove(animation: Animation) {
+    public func remove(animation: Animation, forceComplete:Bool = false) {
         
         guard let index = animations.firstIndex(of: animation) else {
             print("Can't find animation to remove")
             return
         }
         
-        animation.didFinish()
+        if forceComplete {
+            animation.didFinish()
+        }
+        
         animations.remove(at: index)
         
         if animations.isEmpty {
@@ -64,11 +67,11 @@ import QuartzCore
     /**
      Removes all animations
      */
-    public func removeAll() {
+    public func removeAll(forceComplete:Bool = false) {
         
         let allAnimations = animations
         allAnimations.forEach{
-            self.remove(animation: $0)
+            self.remove(animation: $0, forceComplete: forceComplete)
         }
     }
     
