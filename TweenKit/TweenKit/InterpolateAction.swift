@@ -139,7 +139,7 @@ public class InterpolationAction<T: Tweenable>: FiniteTimeAction, SchedulableAct
     }
     
     public func didFinish() {
-        self.update(t: reverse ? 0.0 : 1.0)
+//        self.update(t: reverse ? 0.0 : 1.0)
     }
     
     public func update(t: Double) {
